@@ -107,6 +107,17 @@ O projeto SonarQube Cloud e a organização permanecem declarados em `build.grad
 
 O workflow `.github/workflows/ci-cd.yaml` executa build, testes, cobertura e Sonar. O deploy em EKS usa OIDC e só é habilitado quando a variável do repositório `ENABLE_DEPLOY=true`.
 
+A política desejada para a branch `main` está documentada em
+`.github/branch-protection.yml`. Esse arquivo não ativa a proteção no GitHub:
+a aplicação da regra remota continua sendo uma configuração administrativa.
+
+Para bloquear pushes locais diretos em `main` e `master`, instale o hook
+versionado:
+
+```bash
+sh .github/install-hooks.sh
+```
+
 Configuração esperada:
 
 - secret `SONAR_TOKEN`;
