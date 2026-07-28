@@ -5,6 +5,7 @@ import java.time.Instant
 
 data class Execution(
     val id: Long? = null,
+    val version: Long = 0,
     val osId: Long,
     val status: ExecutionStatus = ExecutionStatus.AWAITING_APPROVAL,
     val items: List<ExecutionItem> = emptyList(),
