@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: execution-service-config
+data:
+  SPRING_PROFILES_ACTIVE: docker
+  DB_HOST: execution-postgres.oficina-mvp-prod.svc.cluster.local
+  DB_PORT: "5432"
+  DB_NAME: oficina_execution_db
+  DB_USER: postgres
+  DD_TRACE_ENABLED: "true"
+  DD_ENV: producao

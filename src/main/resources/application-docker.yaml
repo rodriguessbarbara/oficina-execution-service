@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:db-execution}:${DB_PORT:5432}/${DB_NAME:oficina_execution_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+
+  rabbitmq:
+    addresses: ${CLOUDAMQP_URL:amqp://guest:guest@rabbitmq:5672}

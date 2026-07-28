@@ -1,0 +1,15 @@
+.git
+.github/.env.example
+.env
+.env.*
+.gradle
+.gradle-user-home
+.validation.*.log
+.idea
+.kotlin
+.vscode
+build
+target
+out
+*.iml
+docs
