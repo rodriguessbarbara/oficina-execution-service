@@ -1,5 +1,13 @@
 import java.math.BigDecimal
 
+val coverageExclusions = listOf(
+    "**/OficinaExecutionServiceApplication*",
+    "**/infra/config/**",
+    "**/infra/dto/**",
+    "**/infra/messaging/events/**",
+    "**/infra/repository/entity/**"
+)
+
 plugins {
     kotlin("jvm") version "1.9.24"
     kotlin("plugin.spring") version "1.9.24"
@@ -64,6 +72,11 @@ tasks.withType<Test> {
 
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
+    classDirectories.setFrom(
+        sourceSets.main.get().output.asFileTree.matching {
+            exclude(coverageExclusions)
+        }
+    )
     reports {
         xml.required.set(true)
         html.required.set(true)
@@ -72,12 +85,13 @@ tasks.jacocoTestReport {
 
 tasks.jacocoTestCoverageVerification {
     dependsOn(tasks.jacocoTestReport)
+    classDirectories.setFrom(
+        sourceSets.main.get().output.asFileTree.matching {
+            exclude(coverageExclusions)
+        }
+    )
     violationRules {
         rule {
-            includes = listOf(
-                "com.oficina_execution_service.application.*",
-                "com.oficina_execution_service.domain.model.*"
-            )
             limit {
                 minimum = BigDecimal("0.80")
             }

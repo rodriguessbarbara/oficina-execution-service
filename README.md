@@ -99,7 +99,12 @@ O serviço usa a porta `8082`, PostgreSQL local em `5435` e RabbitMQ em `5672`. 
 ./gradlew check jacocoTestReport --no-daemon
 ```
 
-O `check` executa testes unitários, o cenário BDD e a verificação JaCoCo mínima de 80% sobre as regras de negócio em `application` e `domain.model`. O relatório HTML completo, incluindo infraestrutura, fica em `build/reports/jacoco/test/html/index.html`.
+O `check` executa testes unitários, o cenário BDD e a verificação JaCoCo mínima
+de 80% sobre todo o código comportamental. Somente boilerplate sem regra de
+negócio — aplicação principal, configurações, DTOs, contratos de eventos e
+entidades JPA — é excluído tanto do gate local quanto do relatório enviado ao
+Sonar. O relatório HTML fica em
+`build/reports/jacoco/test/html/index.html`.
 
 O projeto SonarQube Cloud e a organização permanecem declarados em `build.gradle.kts`. No GitHub, configure apenas o secret `SONAR_TOKEN` para a análise.
 

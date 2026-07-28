@@ -26,6 +26,7 @@ class ExecutionRepositoryAdapter(
     private fun Execution.toEntity(): ExecutionEntity {
         val entity = ExecutionEntity(
             id = id,
+            version = version,
             osId = osId,
             status = status,
             createdAt = createdAt,
@@ -52,6 +53,7 @@ class ExecutionRepositoryAdapter(
 
     private fun ExecutionEntity.toDomain(): Execution = Execution(
         id = id,
+        version = version,
         osId = osId,
         status = status,
         items = items.map {
